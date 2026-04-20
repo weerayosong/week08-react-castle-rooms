@@ -1,20 +1,21 @@
+import Castle1 from './components/Castle1';
+
 export default function App() {
-  return (
-    <div className="min-h-screen flex justify-center bg-blue-950">
-      <div className="p-6 gap-y-6 flex flex-col justify-start w-[80%] lg:w-[70%]">
-        <h1 className="w-full p-6 bg-amber-100 font-extrabold">
-          React App Starter
-        </h1>
-        <section className="w-full p-5 bg-amber-100 flex">
-          <ul className="list-inside list-disc flex-1">
-            <span className="font-semibold">Tech Stack:</span>
-            <li>Vite</li>
-            <li>React</li>
-            <li>JavaScript</li>
-            <li>Tailwind</li>
-          </ul>
-        </section>
-      </div>
-    </div>
-  );
+    return (
+        <div className="pb-80 py-10 gap-y-4 flex flex-col justify-center items-center min-h-screen bg-gray-800 text-white">
+            <p className="text-purple-400">Message for JSD12:</p>
+            <span className="text-yellow-300">
+                {/* question or waitng for a message */}
+            </span>
+            <textarea
+                value="Banana"
+                onChange=""
+                className="bg-white text-zinc-500 rounded-xs px-2 py-1"
+                placeholder="Type your message here..."
+            ></textarea>
+            <p className="text-lime-400">Reply from Secret Room:</p>
+            <span>{/* question or waitng for a message */}</span>
+            <Castle1 />
+        </div>
+    );
 }
