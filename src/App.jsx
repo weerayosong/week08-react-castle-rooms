@@ -1,23 +1,26 @@
-import { useState } from 'react'
-import Castle1 from './components/Castle1'
+import { useState } from 'react';
+import Castle1 from './components/Castle1';
+import SimpleAsyncAwait from './examples/async/SimpleAsyncAwait';
 
 export default function App() {
     // State Variable
-    const [question, setQuestion] = useState('')
-    const [reply, setReply] = useState('')
+    const [question, setQuestion] = useState('');
+    const [reply, setReply] = useState('');
 
     const handleQuestion = (event) => {
-        console.log(event)
+        console.log(event);
         // console.log(event.target)
         // console.log(event.target.value)
-        setQuestion(event.target.value)
+        setQuestion(event.target.value);
         // setQuestion('2 set useStaste working')
-    }
+    };
 
     return (
         <div className="pb-80 py-10 gap-y-4 flex flex-col justify-center items-center min-h-screen bg-gray-800 text-white">
-            <p className="text-zinc-400 font-black text-2xl">
-                JSD12 at the OUTSIDE0
+            <p className="text-purple-400 font-black text-2xl text-center">
+                <strike>JSD12 at the OUTSIDE0</strike>
+                <br />
+                แกทำร้ายเพื่อนชั้น ..แกไม่รอดแน่!
             </p>
             <span className="text-yellow-300">
                 {/* question or waitng for a message */}
@@ -32,7 +35,7 @@ export default function App() {
             ></textarea>
 
             <p className="text-lime-400">Reply from Secret Room:</p>
-            <span className="bg-gray-700 w-30% p-2 rounded-xs mb-4 text-center text-yellow-300 font-bold min-h-10">
+            <span className="bg-gray-700 p-2 rounded-xs mb-4 text-center text-yellow-300 font-bold min-h-10">
                 {/* question or waitng for a message */}
                 {reply ? reply : `🤫🤫🤫 ...Waiting for 'answer' reply`}
             </span>
@@ -43,6 +46,8 @@ export default function App() {
                 // reply นี้คืดข้อมูลท้ายสุด มีไว้แสดงผลอย่างเดียวเลย
                 papaya={reply} // อันนี้ส่งจาก App.jsx เอาไปทำส่วนแสดงผลหลอก ๆ เหมือนว่ามี answer นี้ส่งกลับมา 555
             />
+
+            <SimpleAsyncAwait />
         </div>
-    )
+    );
 }

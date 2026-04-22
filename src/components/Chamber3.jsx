@@ -1,10 +1,10 @@
-import Room4 from './Room4'
+import Room4 from './Room4';
 export default function Chamber3({ banana, sendPapayaBack }) {
     return (
         <div className="flex flex-col justify-center items-center pt-10 bg-yellow-400 w-[90%]">
             <h1 className="text-xl font-bold text-white mb-3">Chamber3</h1>
-            {/* {banana ? banana : 'Waiting fo message...'} */}
+
             <Room4 banana={banana} sendPapayaBack={sendPapayaBack} />
         </div>
-    )
+    );
 }
