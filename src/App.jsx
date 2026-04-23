@@ -1,19 +1,12 @@
-import { useState } from 'react';
-import Castle1 from './components/Castle1';
-import SimpleAsyncAwait from './examples/async/SimpleAsyncAwait';
+import { useContext } from 'react'
+import Castle1 from './components/Castle1'
+import SimpleAsyncAwait from './examples/async/SimpleAsyncAwait'
+import { MessageContext } from './contexts/messageContext/MessageContext'
 
 export default function App() {
-    // State Variable
-    const [question, setQuestion] = useState('');
-    const [reply, setReply] = useState('');
-
-    const handleQuestion = (event) => {
-        console.log(event);
-        // console.log(event.target)
-        // console.log(event.target.value)
-        setQuestion(event.target.value);
-        // setQuestion('2 set useStaste working')
-    };
+    const { question, reply, handleQuestion } = useContext(MessageContext)
+    // debug
+    console.log('App มองเห็น reply เป็น:', reply, '  | questioon?: ', question)
 
     return (
         <div className="pb-80 py-10 gap-y-4 flex flex-col justify-center items-center min-h-screen bg-gray-800 text-white">
@@ -39,15 +32,9 @@ export default function App() {
                 {/* question or waitng for a message */}
                 {reply ? reply : `🤫🤫🤫 ...Waiting for 'answer' reply`}
             </span>
-            <Castle1
-                banana={question}
-                // ตัวที่ต้องส่งไปรับ คือ function ที่จะset(useState)ของ reply คือ setReply(event.target.valueใน textArea ของห้อง 9 นู่น)
-                sendPapayaBack={setReply} // อ๋ออออ เขาเรียกว่า setter function
-                // reply นี้คืดข้อมูลท้ายสุด มีไว้แสดงผลอย่างเดียวเลย
-                papaya={reply} // อันนี้ส่งจาก App.jsx เอาไปทำส่วนแสดงผลหลอก ๆ เหมือนว่ามี answer นี้ส่งกลับมา 555
-            />
+            <Castle1 />
 
             <SimpleAsyncAwait />
         </div>
-    );
+    )
 }
