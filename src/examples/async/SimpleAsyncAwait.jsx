@@ -3,20 +3,27 @@ import { useState, useEffect } from 'react';
 export default function PokemonList() {
     const [pokemonList, setPokemonList] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
+    const [err, setErr] = useState(null);
 
     useEffect(() => {
         const getData = async () => {
             try {
-                // 1. Use pokemon-simple-API
+                // Simple Pokemon API
                 const res = await fetch(
                     'https://pokemon-simple.vercel.app/api/pokemon/?limit=151',
                 );
+
+                // (HTTP status 200-299 OK)
+                if (!res.ok) {
+                    throw new Error(`HTTP error! status: ${res.status}`);
+                }
+
                 const data = await res.json();
 
-                // 2. API >> []
                 setPokemonList(data);
             } catch (error) {
-                console.error(`can't fetch:`, error);
+                console.error(`Can't fetch data:`, error);
+                setErr(err.message);
             } finally {
                 setIsLoading(false);
             }
@@ -35,7 +42,7 @@ export default function PokemonList() {
                 <p className="text-center text-xl">Catching them all... 😈</p>
             ) : (
                 <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-9 gap-4">
-                    {/* 3. pokemon.id จาก API ได้เลย */}
+                    {/* pokemon.id จาก API ได้เลย */}
                     {pokemonList.map((pokemon) => {
                         return (
                             <div
